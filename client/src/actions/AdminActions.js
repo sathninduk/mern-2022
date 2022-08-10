@@ -1,16 +1,13 @@
 import axios from 'axios';
 import Keys from "../config/Keys";
 
-// import authHeader from './auth-header';
-function authHeader() {
-    return null;
-}
+import authHeader from '../config/AuthHeader';
 
 const API_URL = Keys.API_URL + "admin/";
 
 class AdminActions {
     CreateUser(email) {
-        return axios.post(API_URL + 'create-user', email, {});
+        return axios.post(API_URL + 'create-user', {email: email}, {headers: authHeader()});
     }
 }
 

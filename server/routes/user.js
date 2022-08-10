@@ -7,8 +7,8 @@ const corsOptions = {
     optionsSuccessStatus: 200
 }
 
-router.route('/test').post(cors(corsOptions), /*auth.isAuthenticated,*/ (req, res) => {
-    res.send("test");
+router.route('/test').post(/*auth.isAuthenticated,*/ (req, res) => {
+    res.send(req.body);
 })
 
 module.exports = router;

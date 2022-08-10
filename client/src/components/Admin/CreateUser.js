@@ -24,8 +24,10 @@ export default function CreateUser() {
         e.preventDefault();
         AdminActions.CreateUser(email).then(r => {
             console.log(r);
+            setLoading(false);
         }).catch(e => {
             console.log(e);
+            setLoading(false);
         })
     };
 
@@ -65,6 +67,5 @@ export default function CreateUser() {
                 </div>
             </div>
         </div>
-    )
-        ;
+    );
 }
