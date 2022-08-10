@@ -17,7 +17,7 @@ export default function Navbar() {
                     </svg>
                 </button>
                 <Link to={"/"} className="navbar-brand">
-                    <h3>Surge Assignment</h3>
+                    Surge Assignment
                 </Link>
 
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -39,9 +39,6 @@ export default function Navbar() {
                             <Link to={"/"} className="nav-link">
                                 Login
                             </Link>
-                        </li>
-                        <li className="nav-item nav-testnet">
-                            Logout
                         </li>
                     </div>
 
