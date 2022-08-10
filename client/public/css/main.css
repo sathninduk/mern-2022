@@ -50,3 +50,7 @@ nav {
 .form-card h5 {
     width: 100% !important;
 }
+
+.logout-link:hover {
+    cursor: pointer;
+}

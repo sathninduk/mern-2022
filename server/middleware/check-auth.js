@@ -15,6 +15,7 @@ module.exports = {
                 } else {
                     req.id = decoded.id;
                     req.email = decoded.email;
+                    req.status = decoded.status;
                     req.role = decoded.role;
                     next();
                 }
@@ -30,6 +31,7 @@ module.exports = {
             jwt.verify(token, keys.JWT_SECRET, function (err, decoded) {
                 req.id = decoded.id;
                 req.email = decoded.email;
+                req.status = decoded.status;
                 req.role = decoded.role;
                 next();
             });

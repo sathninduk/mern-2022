@@ -35,6 +35,7 @@ router.route('/login').post((req, res) => {
                 const payload = {
                     id: user._id,
                     email: user.email,
+                    status: user.status,
                     role: user.accountType
                 };
 

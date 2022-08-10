@@ -1,10 +1,16 @@
-import React, {Component, useState} from "react";
+import React, {useState} from "react";
 import Helmet from "react-helmet";
 import Navbar from "./Layout/Navbar";
 import Box from "@mui/material/Box";
 import {Button, FormGroup} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import AuthActions from "../actions/AuthActions";
+import {Redirect} from "react-router-dom";
+import jwt_decode from "jwt-decode";
+
+import userData from "../utils/userData";
+
+const user = userData();
 
 export default function Login() {
 
@@ -25,8 +31,18 @@ export default function Login() {
     const onSubmit = e => {
         setLoading(true);
         e.preventDefault();
-        AuthActions.LoginUser(email, password).then(() => {
-            setLoading(false);
+        AuthActions.LoginUser(email, password).then(res => {
+            localStorage.setItem("jwt", JSON.stringify(res.data));
+            let jsonPayload = jwt_decode(res.data);
+            if (jsonPayload.role === "user") {
+                if (jsonPayload.status === true) {
+                    document.location.href = '/notes';
+                } else if (jsonPayload.status === false) {
+                    document.location.href = '/reset';
+                }
+            } else if (jsonPayload.role === "admin") {
+                document.location.href = '/user';
+            }
         }).catch(e => {
             console.log(e);
             setLoading(false);
@@ -35,9 +51,17 @@ export default function Login() {
 
     return (
         <div>
+            {user.role === "user" || user.role === "admin" ?
+                user.role === "user" ?
+                    user.status === true ?
+                        <Redirect to="/notes"/> :
+                        <Redirect to="/reset"/> :
+                    <Redirect to="/users"/>
+                : ""}
+
             <Navbar/>
             <Helmet>
-                <title>Add new user</title>
+                <title>Login</title>
             </Helmet>
             <div className={"form-container con-mid"}>
                 <div className={"form-card con-mid"}>
@@ -46,11 +70,11 @@ export default function Login() {
                         component="form"
                         sx={{'& > :not(style)': {m: 1, width: '25ch'},}}
                         noValidate
-                        autoComplete="off"
+                        autoComplete="on"
                         onSubmit={onSubmit}
                     >
                         <FormGroup>
-                            <h5>Add new user</h5>
+                            <h5>Login</h5>
                         </FormGroup>
                         <FormGroup>
                             <TextField

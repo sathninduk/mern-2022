@@ -1,7 +1,16 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
+import userData from "../../utils/userData";
+
+const user = userData();
 
 export default function Navbar() {
+
+    const logout = () => {
+        localStorage.removeItem("jwt");
+        document.location.href = '/';
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark navbar-bg">
             <div className={"container"}>
@@ -35,11 +44,18 @@ export default function Navbar() {
                     </ul>
 
                     <div className="navbar-nav ml-auto">
-                        <li className="nav-item nav-testnet">
-                            <Link to={"/"} className="nav-link">
-                                Login
-                            </Link>
-                        </li>
+                        {user ?
+                            <li className="nav-item nav-testnet">
+                                <span onClick={logout} className="nav-link logout-link">
+                                    Logout
+                                </span>
+                            </li> :
+                            <li className="nav-item nav-testnet">
+                                <Link to={"/"} className="nav-link">
+                                    Login
+                                </Link>
+                            </li>
+                        }
                     </div>
 
                 </div>
