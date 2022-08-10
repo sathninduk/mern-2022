@@ -6,12 +6,12 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {Button} from "@mui/material";
 
-const [email, setEmail] = useState("");
-const [loading, setLoading] = useState(false);
-const [errors, setErrors] = useState({});
-
-
 export default function CreateUser() {
+
+    const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [errors, setErrors] = useState({});
+
     return (
         <div className={"con-mid"}>
             <Navbar/>

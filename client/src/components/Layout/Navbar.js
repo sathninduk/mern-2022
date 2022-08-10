@@ -17,8 +17,7 @@ export default function Navbar() {
                     </svg>
                 </button>
                 <Link to={"/"} className="navbar-brand">
-                    <img src={"/img/logo-white.png"} alt={"ethpay logo"}
-                         className={"nav-logo nav-logo-filter"}/>
+                    <h3>Surge Assignment</h3>
                 </Link>
 
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
