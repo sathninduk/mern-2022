@@ -18,12 +18,30 @@ class UserActions {
     }
 
     CreateNote(title, note) {
-        return axios.post(API_URL + 'create-note', {
+        return axios.post(API_URL + 'note', {
             title: title,
             note: note
         }, {headers: authHeader()})
     }
 
+    FetchNotes(page) {
+        return axios.get(API_URL + 'notes/' + page, {headers: authHeader()})
+    }
+
+    DeleteNote(id) {
+        return axios.delete(API_URL + 'notes/' + id, {headers: authHeader()})
+    }
+
+    GetNoteById(id) {
+        return axios.get(API_URL + 'note/' + id, {headers: authHeader()})
+    }
+
+    UpdateNote(id, title, note) {
+        return axios.put(API_URL + 'note/' + id, {
+            title: title,
+            note: note
+        }, {headers: authHeader()})
+    }
 
 }
 

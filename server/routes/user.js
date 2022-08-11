@@ -37,7 +37,7 @@ router.route('/update-user').post(auth.isAuthenticated, (req, res, next) => {
 
 });
 
-router.route('/create-note').post(auth.isAuthenticated, (req, res, next) => {
+router.route('/note').post(auth.isAuthenticated, (req, res, next) => {
 
     const addNote = new Notes({
         title: req.body.title,
@@ -50,10 +50,75 @@ router.route('/create-note').post(auth.isAuthenticated, (req, res, next) => {
                 .status(200)
                 .json(response);
         }).catch(err => {
-        console.log(err);
+        next(err);
         return res
             .status(404)
             .json({internalError: "Error saving record"});
+    })
+
+});
+
+router.route('/notes/:page').get(auth.isAuthenticated, (req, res, next) => {
+    let page = req.params.page;
+    Notes.find({email: req.email}).sort({date: -1}).then((data) => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(200).json(null);
+        }
+    }).catch((err) => {
+        next(err);
+        return res
+            .status(404)
+            .json({internalError: "Unexpected error occurred! Please try again."});
+    })
+
+});
+
+router.route('/notes/:id').delete(auth.isAuthenticated, (req, res, next) => {
+    let id = req.params.id;
+
+    Notes.deleteOne({_id: id}).then(response => {
+        return res
+            .status(200)
+            .json(response);
+    }).catch(err => {
+        next(err);
+        return res
+            .status(404)
+            .json({internalError: "Unexpected error occurred! Please try again."});
+    })
+
+});
+
+router.route('/note/:id').get(auth.isAuthenticated, (req, res, next) => {
+    let id = req.params.id;
+    Notes.findOne({_id: id}).then((data) => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(200).json(null);
+        }
+    }).catch((err) => {
+        next(err);
+        return res
+            .status(404)
+            .json({internalError: "Unexpected error occurred! Please try again."});
+    })
+
+});
+
+router.route('/note/:id').put(auth.isAuthenticated, (req, res, next) => {
+    let id = req.params.id;
+
+    Notes.updateOne({_id: id}, {
+        title: req.body.title,
+        note: req.body.note
+    }).then(response => {
+        res.status(200).json(response);
+    }).catch(err => {
+        next(err);
+        res.status(500).json(err);
     })
 
 });

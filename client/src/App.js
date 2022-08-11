@@ -29,6 +29,7 @@ class App extends Component {
               {/* User */}
               <Route exact path={"/create-note"} component={CreateNotes} />
               <Route exact path={"/notes"} component={Notes} />
+              <Route exact path={"/note/update/:id"} component={UpdateNotes} />
               <Route exact path={"/update-note"} component={UpdateNotes} />
 
               <Route exact component={NotFound} />

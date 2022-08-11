@@ -54,3 +54,7 @@ nav {
 .logout-link:hover {
     cursor: pointer;
 }
+
+.note-card {
+    border: 1px solid #000;
+}
