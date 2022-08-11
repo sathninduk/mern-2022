@@ -28,6 +28,7 @@ export default function UserList() {
         setLoading(false);
     }).catch(e => {
         console.log(e);
+        setErrors(e.response.data);
         setLoading(false);
     })
 

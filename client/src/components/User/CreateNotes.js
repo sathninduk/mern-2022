@@ -36,6 +36,7 @@ export default function CreateNotes() {
             document.location.href = '/notes/1';
         }).catch(e => {
             console.log(e);
+            setErrors(e.response.data);
             setLoading(false);
         })
     };

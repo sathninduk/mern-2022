@@ -37,6 +37,7 @@ export default function Notes() {
             setNotes(res.data);
         }).catch(e => {
             console.log(e);
+            setErrors(e.response.data);
             setLoading(false);
         })
 
@@ -44,6 +45,7 @@ export default function Notes() {
             let requirePagesCount = Math.ceil(res.data / 6);
             setPageCount(requirePagesCount)
         }).catch(e => {
+            setErrors(e.response.data);
             console.log(e);
         })
 
@@ -56,6 +58,7 @@ export default function Notes() {
             setLoading(true);
         }).catch(e => {
             console.log(e);
+            setErrors(e.response.data);
             setLoading(false);
         })
     }

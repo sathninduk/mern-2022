@@ -27,8 +27,9 @@ export default function UpdateNotes() {
         UserActions.GetNoteById(id).then((res) => {
             setTitle(res.data.title);
             setNote(res.data.note);
-        }).catch(err => {
-            console.log(err);
+        }).catch(e => {
+            console.log(e);
+            setErrors(e.response.data);
         })
     }
 
@@ -49,6 +50,7 @@ export default function UpdateNotes() {
             document.location.href = '/notes/1';
         }).catch(e => {
             console.log(e);
+            setErrors(e.response.data);
             setLoading(false);
         })
     };

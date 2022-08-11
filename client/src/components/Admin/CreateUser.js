@@ -27,6 +27,7 @@ export default function CreateUser() {
             setLoading(false);
         }).catch(e => {
             console.log(e);
+            setErrors(e.response.data);
             setLoading(false);
         })
     };

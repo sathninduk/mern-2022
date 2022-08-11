@@ -53,6 +53,7 @@ export default function Reset() {
             document.location.href = '/';
         }).catch(e => {
             console.log(e);
+            setErrors(e.response.data);
             setLoading(false);
         })
     };
