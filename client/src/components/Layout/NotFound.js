@@ -4,16 +4,13 @@ import Navbar from "./Navbar";
 
 export default function NotFound() {
     return (
-        <div className={"con-mid"}>
+        <div>
             <Navbar/>
-            <div>
-                <Helmet>
-                    <title>Not Found</title>
-                </Helmet>
-                <div className={"big-card"}>
-                    <h5>Not Found</h5>
-                    <p></p>
-                </div>
+            <Helmet>
+                <title>Not Found</title>
+            </Helmet>
+            <div className={"form-container con-mid"} style={{marginTop: "56px"}}>
+                <h3>404 - Not Found</h3>
             </div>
         </div>
     );

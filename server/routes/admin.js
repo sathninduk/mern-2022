@@ -12,11 +12,19 @@ const Users = require("../models/Users");
 
 // middlewares
 const auth = require("../middleware/check-auth");
+const validateNewUser = require("../validation/new-user");
 
 router.route('/create-user').post(auth.isAuthenticated, (req, res, next) => {
 
     if (req.role === "admin") {
         let email = req.body.email;
+
+        const {errors, isValid} = validateNewUser(req.body);
+
+        // Check validation
+        if (!isValid) {
+            return res.status(400).json(errors);
+        }
 
         // email
         const FROM_EMAIL = Keys.GOOGLE_API_USER;
@@ -118,25 +126,27 @@ router.route('/create-user').post(auth.isAuthenticated, (req, res, next) => {
             }
         })
     } else {
-        res.status(403).json({error: "Unauthorized"})
+        res.status(403).json({server: "Unauthorized"})
     }
 })
 
 router.route('/users').get(auth.isAuthenticated, (req, res, next) => {
-
-    Users.find({accountType: "user"}).sort({"_id": -1}).then((data) => {
-        if (data) {
-            res.status(200).json(data);
-        } else {
-            res.status(200).json(null);
-        }
-    }).catch((err) => {
-        next(err);
-        return res
-            .status(404)
-            .json({internalError: "Unexpected error occurred! Please try again."});
-    })
-
+    if (req.role === "admin") {
+        Users.find({accountType: "user"}).sort({"_id": -1}).then((data) => {
+            if (data) {
+                res.status(200).json(data);
+            } else {
+                res.status(200).json(null);
+            }
+        }).catch((err) => {
+            next(err);
+            return res
+                .status(404)
+                .json({internalError: "Unexpected error occurred! Please try again."});
+        })
+    } else {
+        res.status(403).json({server: "Unauthorized"})
+    }
 })
 
 module.exports = router;

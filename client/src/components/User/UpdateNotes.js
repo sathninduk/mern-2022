@@ -22,6 +22,9 @@ export default function UpdateNotes() {
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
 
+    if (errors.server) {
+        console.log(errors.server);
+    }
 
     function fetchNoteData() {
         UserActions.GetNoteById(id).then((res) => {
@@ -94,6 +97,8 @@ export default function UpdateNotes() {
                                 variant="filled"
                                 style={{margin: "10px 0"}}
                                 value={title}
+                                error={!!errors.title}
+                                helperText={errors.title}
                             />
                             <TextField
                                 onChange={onChange}
@@ -104,6 +109,8 @@ export default function UpdateNotes() {
                                 rows={4}
                                 style={{margin: "10px 0"}}
                                 value={note}
+                                error={!!errors.note}
+                                helperText={errors.note}
                             />
                         </FormGroup>
                         <FormGroup>

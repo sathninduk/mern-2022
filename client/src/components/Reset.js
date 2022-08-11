@@ -23,6 +23,10 @@ export default function Reset() {
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
 
+    if (errors.server) {
+        console.log(errors.server);
+    }
+
     const onChange = e => {
         if (e.target.id === "firstName") {
             setFirstName(e.target.value)
@@ -92,6 +96,8 @@ export default function Reset() {
                                 label="First name"
                                 variant="filled"
                                 style={{margin: "10px 0"}}
+                                error={!!errors.firstName}
+                                helperText={errors.firstName}
                             />
                             <TextField
                                 onChange={onChange}
@@ -99,6 +105,8 @@ export default function Reset() {
                                 label="Last name"
                                 variant="filled"
                                 style={{margin: "10px 0"}}
+                                error={!!errors.lastName}
+                                helperText={errors.lastName}
                             />
                             <TextField
                                 onChange={onChange}
@@ -107,6 +115,8 @@ export default function Reset() {
                                 style={{padding: "10px 0"}}
                                 variant="filled"
                                 type="date"
+                                error={!!errors.dateOfBirth}
+                                helperText={errors.dateOfBirth}
                             />
                             <TextField
                                 onChange={onChange}
@@ -114,6 +124,8 @@ export default function Reset() {
                                 label="Mobile number"
                                 variant="filled"
                                 style={{margin: "10px 0"}}
+                                error={!!errors.mobile}
+                                helperText={errors.mobile}
                             />
                             <TextField
                                 onChange={onChange}
@@ -121,6 +133,9 @@ export default function Reset() {
                                 label="New password"
                                 variant="filled"
                                 style={{margin: "10px 0"}}
+                                type={"password"}
+                                error={!!errors.password}
+                                helperText={errors.password}
                             />
                             <TextField
                                 onChange={onChange}
@@ -128,12 +143,15 @@ export default function Reset() {
                                 label="Confirm new password"
                                 variant="filled"
                                 style={{margin: "10px 0"}}
+                                type={"password"}
+                                error={!!errors.password2}
+                                helperText={errors.password2}
                             />
                         </FormGroup>
                         <FormGroup>
                             <Button
                                 type="submit"
-                                variant="contained">Login</Button>
+                                variant="contained">Update</Button>
                         </FormGroup>
                     </Box>
                 </div>

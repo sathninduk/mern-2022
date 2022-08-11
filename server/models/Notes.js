@@ -7,7 +7,8 @@ const NotesSchema = new Schema({
         required: true
     },
     note: {
-        type: String
+        type: String,
+        required: true
     },
     email: {
         type: String,

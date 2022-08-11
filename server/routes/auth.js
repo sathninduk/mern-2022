@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const Keys = require("../config/Keys");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require('cors')
+
+// config
+const Keys = require("../config/Keys");
+
 const corsOptions = {
     origin: Keys.CORS_URL,
     optionsSuccessStatus: 200
@@ -11,9 +14,6 @@ const corsOptions = {
 
 // validation
 const validateLoginInput = require("../validation/login");
-
-// config
-// const Keys = require("../config/Keys");
 
 // models
 const Users = require("../models/Users");

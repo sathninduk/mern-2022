@@ -13,6 +13,10 @@ export default function CreateUser() {
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
 
+    if (errors.server) {
+        console.log(errors.server);
+    }
+
     const onChange = e => {
         if (e.target.id === "email") {
             setEmail(e.target.value)
@@ -25,6 +29,7 @@ export default function CreateUser() {
         AdminActions.CreateUser(email).then(r => {
             console.log(r);
             setLoading(false);
+            document.location.href = '/users';
         }).catch(e => {
             console.log(e);
             setErrors(e.response.data);
@@ -57,6 +62,8 @@ export default function CreateUser() {
                                 id="email"
                                 label="Email"
                                 variant="filled"
+                                error={!!errors.email}
+                                helperText={errors.email}
                             />
                         </FormGroup>
                         <FormGroup>

@@ -19,6 +19,10 @@ export default function CreateNotes() {
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
 
+    if (errors.server) {
+        console.log(errors.server);
+    }
+
     const onChange = e => {
         if (e.target.id === "title") {
             setTitle(e.target.value)
@@ -75,6 +79,8 @@ export default function CreateNotes() {
                                 label="Title"
                                 variant="filled"
                                 style={{margin: "10px 0"}}
+                                error={!!errors.title}
+                                helperText={errors.title}
                             />
                             <TextField
                                 onChange={onChange}
@@ -84,6 +90,8 @@ export default function CreateNotes() {
                                 multiline
                                 rows={4}
                                 style={{margin: "10px 0"}}
+                                error={!!errors.note}
+                                helperText={errors.note}
                             />
                         </FormGroup>
                         <FormGroup>

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Helmet from "react-helmet";
 import Navbar from "../Layout/Navbar";
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import MUIDataTable from "mui-datatables";
 
 import userData from "../../utils/userData";
@@ -15,6 +15,10 @@ export default function UserList() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
+
+    if (errors.server) {
+        console.log(errors.server);
+    }
 
     // users table
     const columns = ["Email", "First Name", "Last Name", "DOB", "Mobile", "Verified"];
@@ -51,6 +55,9 @@ export default function UserList() {
             </Helmet>
             <div className={"form-container con-mid"} style={{marginTop: "56px"}}>
                 <h3>Users</h3>
+                <Link to={'/create-user'}>
+                    + Add user
+                </Link>
 
                 <MUIDataTable
                     title={"Employee List"}

@@ -18,6 +18,10 @@ export default function Login() {
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
 
+    if (errors.server) {
+        console.log(errors.server);
+    }
+
     const onChange = e => {
         if (e.target.id === "email") {
             setEmail(e.target.value)

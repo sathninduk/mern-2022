@@ -14,10 +14,6 @@ const page = parseInt(pathname.split('/').pop());
 
 export default function Notes() {
 
-    // if (!page || isNaN(page) === false) {
-    //     document.location.href = '/notes/1';
-    // }
-
     const [notes, setNotes] = useState([]);
 
     const [pageCount, setPageCount] = useState(0);
@@ -25,6 +21,10 @@ export default function Notes() {
 
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
+
+    if (errors.server) {
+        console.log(errors.server);
+    }
 
     function fetchData() {
 
@@ -54,7 +54,7 @@ export default function Notes() {
     const deleteNote = id => {
         UserActions.DeleteNote(id).then(res => {
             console.log(res)
-            document.getElementById(id).style.display = 'none';
+            window.location.reload();
             setLoading(true);
         }).catch(e => {
             console.log(e);
