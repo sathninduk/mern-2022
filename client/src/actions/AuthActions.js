@@ -1,7 +1,5 @@
 import axios from 'axios';
 import Keys from "../config/Keys";
-import {Redirect} from "react-router-dom";
-import React from "react";
 
 const API_URL = Keys.API_URL + "auth/";
 

@@ -35,7 +35,7 @@ export default function CreateNotes() {
     const onSubmit = e => {
         setLoading(true);
         e.preventDefault();
-        UserActions.CreateNote(title, note).then(res => {
+        UserActions.CreateNote(title, note).then(() => {
             setLoading(false);
             document.location.href = '/notes/1';
         }).catch(e => {

@@ -51,7 +51,7 @@ export default function UpdateNotes() {
     const onSubmit = e => {
         setLoading(true);
         e.preventDefault();
-        UserActions.UpdateNote(id, title, note).then(res => {
+        UserActions.UpdateNote(id, title, note).then(() => {
             setLoading(false);
             document.location.href = '/notes/1';
         }).catch(e => {

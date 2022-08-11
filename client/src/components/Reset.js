@@ -51,7 +51,7 @@ export default function Reset() {
     const onSubmit = e => {
         setLoading(true);
         e.preventDefault();
-        UserActions.UpdateUserInfo(firstName, lastName, dateOfBirth, mobile, password, password2).then(res => {
+        UserActions.UpdateUserInfo(firstName, lastName, dateOfBirth, mobile, password, password2).then(() => {
             localStorage.removeItem("jwt");
             document.location.href = '/';
             setLoading(false);
