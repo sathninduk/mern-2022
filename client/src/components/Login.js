@@ -43,7 +43,7 @@ export default function Login() {
                 document.location.href = '/users';
             }
         }).catch(e => {
-            console.log(e);
+            setErrors(e.response.data);
             setLoading(false);
         })
     };
@@ -81,6 +81,8 @@ export default function Login() {
                                 id="email"
                                 label="Email"
                                 variant="filled"
+                                error={!!errors.email}
+                                helperText={errors.email}
                             />
                             <TextField
                                 onChange={onChange}
@@ -88,6 +90,8 @@ export default function Login() {
                                 label="Password"
                                 variant="filled"
                                 type={"password"}
+                                error={!!errors.password}
+                                helperText={errors.password}
                             />
                         </FormGroup>
                         <FormGroup>

@@ -9,22 +9,31 @@ const corsOptions = {
     optionsSuccessStatus: 200
 }
 
+// validation
+const validateLoginInput = require("../validation/login");
+
 // config
 // const Keys = require("../config/Keys");
 
 // models
 const Users = require("../models/Users");
 
-
-router.route('/login').post((req, res) => {
+router.route('/login').post((req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
+
+    const {errors, isValid} = validateLoginInput(req.body);
+
+    // Check validation
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
 
 // Find user by email
     Users.findOne({email: email}).then(user => {
         // Check if user exists
         if (!user) {
-            return res.status(404).json({emailnotfound: "Email not found"});
+            return res.status(404).json({email: "Email not found"});
         }
 
         // Check password
@@ -58,11 +67,21 @@ router.route('/login').post((req, res) => {
 
             } else {
                 return res
-                    .status(400)
-                    .json({passwordincorrect: "Password incorrect"});
+                    .status(403)
+                    .json({password: "Incorrect Password"});
             }
+        }).catch(error => {
+            next(error);
+            return res
+                .status(500)
+                .json({server: "Something went wrong"});
         });
-    });
+    }).catch(error => {
+        next(error);
+        return res
+            .status(500)
+            .json({server: "Something went wrong"});
+    })
 });
 
 module.exports = router;
