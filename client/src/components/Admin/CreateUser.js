@@ -4,8 +4,12 @@ import Navbar from "../Layout/Navbar";
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import {Button, FormGroup} from "@mui/material";
+import {Button, CircularProgress, FormGroup, LinearProgress} from "@mui/material";
 import AdminActions from "../../actions/AdminActions";
+import {Redirect} from "react-router-dom";
+
+import userData from "../../utils/userData";
+const user = userData();
 
 export default function CreateUser() {
 
@@ -39,6 +43,14 @@ export default function CreateUser() {
 
     return (
         <div>
+            {user.role === "user" || user.role === "admin" ?
+                user.role === "user" ?
+                    user.status === true ?
+                        <Redirect to="/notes/1"/> :
+                        <Redirect to="/reset"/> :
+                    ""
+                : <Redirect to="/"/>}
+            {loading === true ? <LinearProgress /> : ""}
             <Navbar/>
             <Helmet>
                 <title>Add new user</title>
@@ -69,7 +81,13 @@ export default function CreateUser() {
                         <FormGroup>
                             <Button
                                 type="submit"
-                                variant="contained">Register</Button>
+                                variant="contained">
+                                {loading === true ?
+                                    <CircularProgress size="1rem" color={"inherit"} style={{
+                                        marginBottom: "-2px",
+                                    }}/>
+                                    : "Register"}
+                            </Button>
                         </FormGroup>
                     </Box>
                 </div>

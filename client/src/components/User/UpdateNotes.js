@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import Navbar from "../Layout/Navbar";
 import {Redirect} from "react-router-dom";
 import Box from "@mui/material/Box";
-import {Button, FormGroup} from "@mui/material";
+import {Button, CircularProgress, FormGroup, LinearProgress} from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 import userData from "../../utils/userData";
@@ -74,7 +74,7 @@ export default function UpdateNotes() {
                         <Redirect to="/reset"/> :
                     <Redirect to="/users"/>
                 : <Redirect to="/"/>}
-
+            {loading === true ? <LinearProgress /> : ""}
             <Navbar/>
             <Helmet>
                 <title>Update note</title>
@@ -119,7 +119,13 @@ export default function UpdateNotes() {
                         <FormGroup>
                             <Button
                                 type="submit"
-                                variant="contained">Update</Button>
+                                variant="contained">
+                                {loading === true ?
+                                    <CircularProgress size="1rem" color={"inherit"} style={{
+                                        marginBottom: "-2px",
+                                    }}/>
+                                    : "Update"}
+                            </Button>
                         </FormGroup>
                     </Box>
                 </div>

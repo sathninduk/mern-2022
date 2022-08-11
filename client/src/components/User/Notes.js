@@ -6,7 +6,7 @@ import Pagination from 'react-responsive-pagination';
 
 import userData from "../../utils/userData";
 import UserActions from "../../actions/UserActions";
-import {Button} from "@mui/material";
+import {Button, LinearProgress} from "@mui/material";
 
 const user = userData();
 const pathname = window.location.pathname;
@@ -84,7 +84,7 @@ export default function Notes() {
                         <Redirect to="/reset"/> :
                     <Redirect to="/users"/>
                 : <Redirect to="/"/>}
-
+            {loading === true ? <LinearProgress /> : ""}
             <Navbar/>
             <Helmet>
                 <title>Notes</title>

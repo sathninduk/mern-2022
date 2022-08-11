@@ -6,6 +6,7 @@ import MUIDataTable from "mui-datatables";
 
 import userData from "../../utils/userData";
 import AdminActions from "../../actions/AdminActions";
+import {LinearProgress} from "@mui/material";
 
 const user = userData();
 
@@ -55,7 +56,7 @@ export default function UserList() {
                         <Redirect to="/reset"/> :
                     ""
                 : <Redirect to="/"/>}
-
+            {loading === true ? <LinearProgress /> : ""}
             <Navbar/>
             <Helmet>
                 <title>Users</title>

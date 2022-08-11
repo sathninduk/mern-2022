@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Helmet from "react-helmet";
 import Navbar from "./Layout/Navbar";
 import Box from "@mui/material/Box";
-import {Button, FormGroup} from "@mui/material";
+import {Button, CircularProgress, FormGroup, LinearProgress} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import AuthActions from "../actions/AuthActions";
 import {Redirect} from "react-router-dom";
@@ -63,6 +63,7 @@ export default function Login() {
                     <Redirect to="/users"/>
                 : ""}
 
+            {loading === true ? <LinearProgress /> : ""}
             <Navbar/>
             <Helmet>
                 <title>Login</title>
@@ -102,7 +103,11 @@ export default function Login() {
                         <FormGroup>
                             <Button
                                 type="submit"
-                                variant="contained">Login</Button>
+                                variant="contained">{loading === true ?
+                                <CircularProgress size="1rem" color={"inherit"} style={{
+                                    marginBottom: "-2px",
+                                }}/>
+                                : "Login"}</Button>
                         </FormGroup>
                     </Box>
                 </div>
