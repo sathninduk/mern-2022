@@ -35,7 +35,7 @@ export default function Login() {
             let jsonPayload = jwt_decode(res.data);
             if (jsonPayload.role === "user") {
                 if (jsonPayload.status === true) {
-                    document.location.href = '/notes';
+                    document.location.href = '/notes/1';
                 } else if (jsonPayload.status === false) {
                     document.location.href = '/reset';
                 }
@@ -53,7 +53,7 @@ export default function Login() {
             {user.role === "user" || user.role === "admin" ?
                 user.role === "user" ?
                     user.status === true ?
-                        <Redirect to="/notes"/> :
+                        <Redirect to="/notes/1"/> :
                         <Redirect to="/reset"/> :
                     <Redirect to="/users"/>
                 : ""}

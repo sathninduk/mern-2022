@@ -62,7 +62,7 @@ export default function Reset() {
             {user.role === "user" || user.role === "admin" ?
                 user.role === "user" ?
                     user.status === true ?
-                        <Redirect to="/notes"/> :
+                        <Redirect to="/notes/1"/> :
                         "" :
                     <Redirect to="/users"/>
                 : <Redirect to="/"/>}

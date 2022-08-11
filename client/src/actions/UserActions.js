@@ -7,7 +7,7 @@ const API_URL = Keys.API_URL + "user/";
 
 class UserActions {
     UpdateUserInfo(firstName, lastName, dateOfBirth, mobile, password, password2) {
-        return axios.post(API_URL + 'update-user', {
+        return axios.put(API_URL + 'user', {
             firstName: firstName,
             lastName: lastName,
             dateOfBirth: dateOfBirth,
@@ -28,8 +28,12 @@ class UserActions {
         return axios.get(API_URL + 'notes/' + page, {headers: authHeader()})
     }
 
+    FetchNotesCount() {
+        return axios.get(API_URL + 'notes-count', {headers: authHeader()})
+    }
+
     DeleteNote(id) {
-        return axios.delete(API_URL + 'notes/' + id, {headers: authHeader()})
+        return axios.delete(API_URL + 'note/' + id, {headers: authHeader()})
     }
 
     GetNoteById(id) {

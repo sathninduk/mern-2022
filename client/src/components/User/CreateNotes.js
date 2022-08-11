@@ -33,7 +33,7 @@ export default function CreateNotes() {
         e.preventDefault();
         UserActions.CreateNote(title, note).then(res => {
             setLoading(false);
-            document.location.href = '/notes';
+            document.location.href = '/notes/1';
         }).catch(e => {
             console.log(e);
             setLoading(false);

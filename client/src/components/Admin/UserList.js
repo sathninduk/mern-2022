@@ -13,7 +13,7 @@ export default function UserList() {
             {user.role === "user" || user.role === "admin" ?
                 user.role === "user" ?
                     user.status === true ?
-                        <Redirect to="/notes"/> :
+                        <Redirect to="/notes/1"/> :
                         <Redirect to="/reset"/> :
                     ""
                 : <Redirect to="/"/>}

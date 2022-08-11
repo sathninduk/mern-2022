@@ -12,7 +12,7 @@ const auth = require("../middleware/check-auth");
 const bcrypt = require("bcryptjs");
 const Notes = require("../models/Notes");
 
-router.route('/update-user').post(auth.isAuthenticated, (req, res, next) => {
+router.route('/user').put(auth.isAuthenticated, (req, res, next) => {
 
     // Hash password before saving in database
     bcrypt.genSalt(10, (err, salt) => {
@@ -58,9 +58,27 @@ router.route('/note').post(auth.isAuthenticated, (req, res, next) => {
 
 });
 
+router.route('/notes-count').get(auth.isAuthenticated, (req, res, next) => {
+    Notes.find({email: req.email}).count().then((data) => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(200).json(0);
+        }
+    }).catch((err) => {
+        next(err);
+        return res
+            .status(404)
+            .json({internalError: "Unexpected error occurred! Please try again."});
+    })
+})
+
 router.route('/notes/:page').get(auth.isAuthenticated, (req, res, next) => {
     let page = req.params.page;
-    Notes.find({email: req.email}).sort({date: -1}).then((data) => {
+    let skip = (page - 1) * 6;
+
+    // find notes and backend pagination
+    Notes.find({email: req.email}).sort({"_id": -1}).skip(skip).limit(6).then((data) => {
         if (data) {
             res.status(200).json(data);
         } else {
@@ -75,7 +93,7 @@ router.route('/notes/:page').get(auth.isAuthenticated, (req, res, next) => {
 
 });
 
-router.route('/notes/:id').delete(auth.isAuthenticated, (req, res, next) => {
+router.route('/note/:id').delete(auth.isAuthenticated, (req, res, next) => {
     let id = req.params.id;
 
     Notes.deleteOne({_id: id}).then(response => {

@@ -25,9 +25,18 @@ export default function Navbar() {
                         <rect x="1" y="9" width="14" height="1.5" rx="1" fill="rgba(255, 255, 255, .9)"></rect>
                     </svg>
                 </button>
-                <Link to={"/"} className="navbar-brand">
-                    Surge Assignment
-                </Link>
+                {user.role ?
+                    user.role === 'user' ?
+                    <a href={"/notes/1"} className="navbar-brand">
+                        Surge Assignment
+                    </a> :
+                    <a href={"/users"} className="navbar-brand">
+                        Surge Assignment
+                    </a> :
+                    <a href={"/"} className="navbar-brand">
+                        Surge Assignment
+                    </a>
+                }
 
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">

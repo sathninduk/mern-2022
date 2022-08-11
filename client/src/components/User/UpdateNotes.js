@@ -46,7 +46,7 @@ export default function UpdateNotes() {
         e.preventDefault();
         UserActions.UpdateNote(id, title, note).then(res => {
             setLoading(false);
-            document.location.href = '/notes';
+            document.location.href = '/notes/1';
         }).catch(e => {
             console.log(e);
             setLoading(false);

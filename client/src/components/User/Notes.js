@@ -1,28 +1,53 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Helmet from "react-helmet";
 import Navbar from "../Layout/Navbar";
 import {Link, Redirect} from "react-router-dom";
+import Pagination from 'react-responsive-pagination';
 
 import userData from "../../utils/userData";
 import UserActions from "../../actions/UserActions";
 import {Button} from "@mui/material";
 
 const user = userData();
+const pathname = window.location.pathname;
+const page = parseInt(pathname.split('/').pop());
 
 export default function Notes() {
 
+    // if (!page || isNaN(page) === false) {
+    //     document.location.href = '/notes/1';
+    // }
+
     const [notes, setNotes] = useState([]);
+
+    const [pageCount, setPageCount] = useState(0);
+    const [currentPage, setCurrentPage] = useState(page);
 
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
 
-    UserActions.FetchNotes(1).then(res => {
-        setLoading(false);
-        setNotes(res.data);
-    }).catch(e => {
-        console.log(e);
-        setLoading(false);
-    })
+    function fetchData() {
+
+        if (isNaN(page) === true) {
+            document.location.href = '/notes/1';
+        }
+
+        UserActions.FetchNotes(page).then(res => {
+            setLoading(false);
+            setNotes(res.data);
+        }).catch(e => {
+            console.log(e);
+            setLoading(false);
+        })
+
+        UserActions.FetchNotesCount().then(res => {
+            let requirePagesCount = Math.ceil(res.data / 6);
+            setPageCount(requirePagesCount)
+        }).catch(e => {
+            console.log(e);
+        })
+
+    }
 
     const deleteNote = id => {
         UserActions.DeleteNote(id).then(res => {
@@ -34,6 +59,16 @@ export default function Notes() {
             setLoading(false);
         })
     }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    useEffect(() => {
+        if (page !== currentPage) {
+            document.location.href = '/notes/' + currentPage;
+        }
+    }, [currentPage])
 
     return (
         <div>
@@ -55,16 +90,28 @@ export default function Notes() {
                     + Add note
                 </Link>
                 <br/>
-                {notes.map(note =>
-                    <div id={note._id} key={note._id} className={"note-card"}>
-                        <h5>{note.title}</h5>
-                        <p>{note.note}</p>
-                        <a href={'/note/update/' + note._id}>Update</a>
-                        <Button onClick={() => deleteNote(note._id)}>
-                            Delete
-                        </Button>
+                <div className={"container con-mid"}>
+                    <div className={"row"}>
+                        {notes.map(note =>
+                            <div id={note._id} key={note._id} className={"col-xs note-card"}>
+                                <h5>{note.title}</h5>
+                                <p>{note.note}</p>
+                                <a href={'/note/update/' + note._id}>Update</a>
+                                <Button onClick={() => deleteNote(note._id)}>
+                                    Delete
+                                </Button>
+                            </div>
+                        )}
                     </div>
-                )}
+                </div>
+                <br/>
+                <div className={"pagination"}>
+                    <Pagination
+                        current={currentPage}
+                        total={pageCount}
+                        onPageChange={setCurrentPage}
+                    />
+                </div>
             </div>
         </div>
     );

@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-nav {
+.navbar {
     color: #000;
     position: fixed !important;
     width: 100%;
@@ -57,4 +57,5 @@ nav {
 
 .note-card {
     border: 1px solid #000;
+    min-width: calc(100% / 3);
 }
