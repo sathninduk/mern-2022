@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Helmet from "react-helmet";
 import Navbar from "../Layout/Navbar";
 import {Link, Redirect} from "react-router-dom";
@@ -6,7 +6,6 @@ import MUIDataTable from "mui-datatables";
 
 import userData from "../../utils/userData";
 import AdminActions from "../../actions/AdminActions";
-import {Button} from "@mui/material";
 
 const user = userData();
 
@@ -27,18 +26,26 @@ export default function UserList() {
     };
     let userData = [];
 
-    AdminActions.FetchUsers().then(res => {
-        setUsers(res.data);
-        setLoading(false);
-    }).catch(e => {
-        console.log(e);
-        setErrors(e.response.data);
-        setLoading(false);
-    })
+    function fetchData() {
+        setLoading(true);
+        AdminActions.FetchUsers().then(res => {
+            setUsers(res.data);
+            setLoading(false);
+        }).catch(e => {
+            console.log(e);
+            setErrors(e.response.data);
+            setLoading(false);
+        })
+    }
 
     users.map(singleUser =>
         userData.push([singleUser.email, singleUser.firstName, singleUser.lastName, singleUser.dateOfBirth, singleUser.mobile, (singleUser.status).toString()])
     )
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
     return (
         <div>
             {user.role === "user" || user.role === "admin" ?

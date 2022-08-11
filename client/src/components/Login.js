@@ -46,6 +46,7 @@ export default function Login() {
             } else if (jsonPayload.role === "admin") {
                 document.location.href = '/users';
             }
+            setLoading(false);
         }).catch(e => {
             setErrors(e.response.data);
             setLoading(false);

@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {useState} from "react";
 import Helmet from "react-helmet";
 import Navbar from "../Layout/Navbar";
 import {Redirect} from "react-router-dom";

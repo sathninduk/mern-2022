@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {useState} from "react";
 import Helmet from "react-helmet";
 import Navbar from "./Layout/Navbar";
 import {Redirect} from "react-router-dom";
@@ -8,7 +8,6 @@ import TextField from "@mui/material/TextField";
 
 import userData from "../utils/userData";
 import UserActions from "../actions/UserActions";
-import jwt_decode from "jwt-decode";
 const user = userData();
 
 export default function Reset() {
@@ -52,9 +51,9 @@ export default function Reset() {
         setLoading(true);
         e.preventDefault();
         UserActions.UpdateUserInfo(firstName, lastName, dateOfBirth, mobile, password, password2).then(res => {
-            setLoading(false);
             localStorage.removeItem("jwt");
             document.location.href = '/';
+            setLoading(false);
         }).catch(e => {
             console.log(e);
             setErrors(e.response.data);

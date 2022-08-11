@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Helmet from "react-helmet";
 import Navbar from "../Layout/Navbar";
 import {Redirect} from "react-router-dom";
@@ -27,12 +27,15 @@ export default function UpdateNotes() {
     }
 
     function fetchNoteData() {
+        setLoading(true);
         UserActions.GetNoteById(id).then((res) => {
             setTitle(res.data.title);
             setNote(res.data.note);
+            setLoading(false);
         }).catch(e => {
             console.log(e);
             setErrors(e.response.data);
+            setLoading(false);
         })
     }
 

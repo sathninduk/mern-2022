@@ -27,6 +27,7 @@ export default function Notes() {
     }
 
     function fetchData() {
+        setLoading(true);
 
         if (isNaN(page) === true) {
             document.location.href = '/notes/1';
@@ -52,10 +53,11 @@ export default function Notes() {
     }
 
     const deleteNote = id => {
+        setLoading(true);
         UserActions.DeleteNote(id).then(res => {
             console.log(res)
             window.location.reload();
-            setLoading(true);
+            setLoading(false);
         }).catch(e => {
             console.log(e);
             setErrors(e.response.data);
