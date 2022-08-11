@@ -9,7 +9,6 @@ import {Redirect} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 import userData from "../utils/userData";
-
 const user = userData();
 
 export default function Login() {
@@ -41,7 +40,7 @@ export default function Login() {
                     document.location.href = '/reset';
                 }
             } else if (jsonPayload.role === "admin") {
-                document.location.href = '/user';
+                document.location.href = '/users';
             }
         }).catch(e => {
             console.log(e);
@@ -70,7 +69,7 @@ export default function Login() {
                         component="form"
                         sx={{'& > :not(style)': {m: 1, width: '25ch'},}}
                         noValidate
-                        autoComplete="on"
+                        // autoComplete="off"
                         onSubmit={onSubmit}
                     >
                         <FormGroup>
@@ -88,6 +87,7 @@ export default function Login() {
                                 id="password"
                                 label="Password"
                                 variant="filled"
+                                type={"password"}
                             />
                         </FormGroup>
                         <FormGroup>
