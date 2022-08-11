@@ -122,4 +122,21 @@ router.route('/create-user').post(auth.isAuthenticated, (req, res, next) => {
     }
 })
 
+router.route('/users').get(auth.isAuthenticated, (req, res, next) => {
+
+    Users.find({accountType: "user"}).sort({"_id": -1}).then((data) => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(200).json(null);
+        }
+    }).catch((err) => {
+        next(err);
+        return res
+            .status(404)
+            .json({internalError: "Unexpected error occurred! Please try again."});
+    })
+
+})
+
 module.exports = router;
