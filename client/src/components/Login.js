@@ -110,6 +110,12 @@ export default function Login() {
                                 : "Login"}</Button>
                         </FormGroup>
                     </Box>
+                    <div style={{marginTop: "20px", textAlign: "left"}}>
+                        <h6>Admin login credentials</h6>
+                        <span style={{fontSize: "12px"}}><strong>Email:</strong> admin@admin.com</span>
+                        <br/>
+                        <span style={{fontSize: "12px"}}><strong>Password:</strong> admin123</span>
+                    </div>
                 </div>
             </div>
         </div>

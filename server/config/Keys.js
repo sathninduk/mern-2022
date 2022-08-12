@@ -5,7 +5,6 @@ module.exports = {
     MONGO_URI: process.env.MONGO_URI,
     JWT_SECRET: process.env.JWT_SECRET,
 
-    // Email SMTP
     GOOGLE_API_SERVICE: process.env.GOOGLE_API_SERVICE,
     GOOGLE_API_TYPE: process.env.GOOGLE_API_TYPE,
     GOOGLE_API_USER: process.env.GOOGLE_API_USER,
