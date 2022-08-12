@@ -23,11 +23,11 @@ REACT_APP_API_URL
 ```terminal
 $ cd client   // go to client folder
 $ npm i       // npm install packages
-$ npm start // run it locally
+$ npm start   // run it locally
 
-// deployment for client app
-$ npm run build // this will compile the react code using webpack and generate a folder called docs in the root level
-$ serve -s build // this will run the files in docs, this behavior is exactly the same how gh-pages will run your static site
+// client build
+$ npm run build
+$ serve -s build
 ```
 
 ## Server-side usage(PORT: 4000)
@@ -56,7 +56,7 @@ GOOGLE_API_REFRESH_TOKEN
 ```terminal
 $ cd server   // go to server folder
 $ npm i       // npm install packages
-$ npm start // run it locally
+$ npm start   // run it locally
 ```
 
 # Deployed environments
