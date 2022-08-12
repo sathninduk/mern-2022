@@ -1,0 +1,9 @@
+[{
+  "_id": {
+    "$oid": "62f5bb641d13474da21ef975"
+  },
+  "email": "admin@admin.com",
+  "password": "$2a$10$P4YYvYzlMhLbb5nwDLNCxezdsyJkFp3Tjuzr1YQ4nqtlXBOdgzpr2",
+  "status": true,
+  "accountType": "admin"
+}]
