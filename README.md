@@ -20,15 +20,15 @@ notice, you need client and server runs concurrently in different terminal sessi
 ## Client-side usage(PORT: 3000)
 ### Prepare your secret - client
 
-rename **.env.example** file as **.env** and specify your 
+rename **.env.example** file as **.env** and specify your API URL (http://localhost:4000/)
 ```terminal
 REACT_APP_API_URL
 ```
 ### Installation and start - client
 ```terminal
-$ cd client   // go to client folder
-$ npm i       // npm install packages
-$ npm start   // run it locally
+$ cd client                     // go to client folder
+$ npm i --legacy-peer-dep       // npm install packages (flag to fix mui version conflicts)
+$ npm start                     // run it locally
 
 // client build
 $ npm run build
