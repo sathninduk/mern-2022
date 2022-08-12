@@ -72,9 +72,3 @@ Use **seed.json** file at the root directory as your database seed file.
 Email: admin@admin.com
 \
 Password: admin123
-
-## Author
-Buddhi Perera
-
-### License
-[MIT](https://github.com/amazingandyyy/mern/blob/master/LICENSE)
