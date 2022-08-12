@@ -2,7 +2,10 @@ const express = require('express')
 const mongoose = require('mongoose');
 const app = express()
 
+// port
 const port = 4000
+
+// routes
 const admin = require("./routes/admin");
 const auth = require("./routes/auth");
 const user = require("./routes/user")
@@ -10,7 +13,6 @@ const Keys = require("./config/Keys");
 
 // CORS
 const cors=require("cors");
-const bodyParser = require("express");
 const corsOptions ={
     origin: Keys.CORS_URL,
     credentials:true,
@@ -20,11 +22,8 @@ const corsOptions ={
 app.use(cors(corsOptions))
 
 // BodyParser middleware
-app.use(
-    bodyParser.urlencoded({
-        extended: false
-    })
-);
+const bodyParser = require("express");
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Connect to MongoDB
