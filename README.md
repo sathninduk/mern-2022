@@ -68,11 +68,23 @@ $ npm start   // run it locally
 ### Insert admin user to the database
 Use **seed.json** file at the root directory as your database seed file to add admin user record to the **users** collection.
 
+**Step 1**
+Create database **surge**
+
+**Step 2**
+Create collection **users**
+
+**Step 3**
+Import **seed.json** to the users collection
+
+**Summery**
+
 **Database:** surge
 \
 **Collection:** users
 \
 **Seed file:** seed.json
+\
 
 ## Admin user
 **Email: admin@admin.com**
