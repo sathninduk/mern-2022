@@ -77,7 +77,7 @@ Create collection **users**
 **Step 3**
 Import **seed.json** to the users collection
 
-**Summery**
+**Summary**
 
 **Database:** surge
 \
