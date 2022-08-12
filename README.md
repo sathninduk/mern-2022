@@ -66,7 +66,11 @@ $ npm start   // run it locally
 
 ## Database seed file (MongoDB)
 ### Insert admin user to the database
-Use **seed.json** file at the root directory as your database seed file.
+Use **seed.json** file at the root directory as your database seed file to add admin user record to the **users** collection.
+
+**Collection: users**
+\
+**Seed file: seed.json**
 
 ## Admin user
 **Email: admin@admin.com**
