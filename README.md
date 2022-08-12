@@ -20,7 +20,7 @@ notice, you need client and server runs concurrently in different terminal sessi
 ## Client-side usage(PORT: 3000)
 ### Prepare your secret - client
 
-rename **.env.example** file as **.env** and specify your 
+rename **.env.example** file as **.env** and specify your API URL (http://localhost:4000/)
 ```terminal
 REACT_APP_API_URL
 ```
