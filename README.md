@@ -26,9 +26,9 @@ REACT_APP_API_URL
 ```
 ### Installation and start - client
 ```terminal
-$ cd client   // go to client folder
-$ npm i       // npm install packages
-$ npm start   // run it locally
+$ cd client                     // go to client folder
+$ npm i --legacy-peer-dep       // npm install packages (flag to fix mui version conflicts)
+$ npm start                     // run it locally
 
 // client build
 $ npm run build
