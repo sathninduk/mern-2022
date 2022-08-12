@@ -59,7 +59,7 @@ $ npm i       // npm install packages
 $ npm start   // run it locally
 ```
 
-# Deployed environments
+# Deployed environment
 
 Netlify: [https://surge-buddhi.netlify.app](https://surge-buddhi.netlify.app)
 
