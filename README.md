@@ -1,5 +1,8 @@
 # Surge Global Assignment
 
+# Deployed live preview
+Netlify: [https://surge-buddhi.netlify.app](https://surge-buddhi.netlify.app)
+
 ## clone or download
 ```terminal
 $ git clone https://github.com/BuddhiPerera/Surge_Global_Internship_Assignment
@@ -59,14 +62,7 @@ $ npm i       // npm install packages
 $ npm start   // run it locally
 ```
 
-# Deployed environment
-
-Netlify: [https://surge-buddhi.netlify.app](https://surge-buddhi.netlify.app)
-
-
 ## Author
-
-
 Buddhi Perera
 
 ### License
