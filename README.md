@@ -68,9 +68,9 @@ $ npm start   // run it locally
 ### Insert admin user to the database
 Use **seed.json** file at the root directory as your database seed file to add admin user record to the **users** collection.
 
-**Collection: users**
+**Collection: **users
 \
-**Seed file: seed.json**
+**Seed file: **seed.json
 
 ## Admin user
 **Email: admin@admin.com**
