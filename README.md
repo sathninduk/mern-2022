@@ -11,8 +11,8 @@ $ git clone https://github.com/BuddhiPerera/Surge_Global_Internship_Assignment
 ```
 
 ## Prerequisites
-- [MongoDB](https://gist.github.com/nrollr/9f523ae17ecdbb50311980503409aeb3)
-- [Node](https://nodejs.org/en/download/) ^10.0.0
+- [MongoDB](https://www.mongodb.com/try/download/community)
+- [Node](https://nodejs.org/en/download/) (Recommended version: The latest LTS)
 - [npm](https://nodejs.org/en/download/package-manager/)
 
 notice, you need client and server runs concurrently in different terminal session, in order to make them talk to each other
@@ -69,6 +69,6 @@ $ npm start   // run it locally
 Use **seed.json** file at the root directory as your database seed file.
 
 ## Admin user
-Email: admin@admin.com
+**Email: admin@admin.com**
 \
-Password: admin123
+**Password: admin123**
