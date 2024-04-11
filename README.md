@@ -85,3 +85,10 @@ Import **seed.json** to the users collection
 **Email: admin@admin.com**
 \
 **Password: admin123**
+
+## Contributors
+- [Sathnindu Kottage](https://github.com/sathninduk)
+- [Buddhi Perera](https://github.com/buddhiPerera)
+
+## License
+This project is licensed under the MIT License
