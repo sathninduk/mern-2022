@@ -51,6 +51,8 @@ GOOGLE_API_REDIRECT_URL
 GOOGLE_API_REFRESH_TOKEN
 ```
 
+How to obtain new Google API Variables: [Watch](https://youtu.be/-rcRf7yswfM)
+
 ### Installation and start - server
 
 ```terminal
