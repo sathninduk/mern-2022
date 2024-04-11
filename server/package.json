@@ -10,7 +10,7 @@
     "client": "npm start --prefix client",
     "dev": "npm run server"
   },
-  "author": "Buddhi Perera",
+  "author": "Sathnindu Kottage",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",

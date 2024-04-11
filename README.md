@@ -67,7 +67,7 @@ Use **seed.json** file at the root directory as your database seed file to add a
 
 **Step 1**
 \
-Create database **surge**
+Create database **mern**
 
 **Step 2**
 \
@@ -79,7 +79,7 @@ Import **seed.json** to the users collection
 
 **Summary**
 \
-**Database:** surge, **Collection:** users, **Seed file:** seed.json
+**Database:** mern, **Collection:** users, **Seed file:** seed.json
 
 ## Admin user
 **Email: admin@admin.com**
