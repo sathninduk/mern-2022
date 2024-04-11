@@ -2,7 +2,7 @@
 
 ## clone or download
 ```terminal
-$ git clone https://github.com/sathninduk/surge.git ./surge
+$ git clone https://github.com/sathninduk/mern.git ./mern
 ```
 
 ## Prerequisites
