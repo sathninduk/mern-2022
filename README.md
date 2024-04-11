@@ -1,13 +1,8 @@
-# Surge Global Assignment
-
-## Deployed live preview
-Netlify: [https://surge-buddhi.netlify.app](https://surge-buddhi.netlify.app)
-
-
+# MERN Auth Framework 2022 by Sathnindu
 
 ## clone or download
 ```terminal
-$ git clone https://github.com/BuddhiPerera/Surge_Global_Internship_Assignment
+$ git clone https://github.com/sathninduk/surge.git ./surge
 ```
 
 ## Prerequisites
