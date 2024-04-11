@@ -53,9 +53,9 @@ router.route('/create-user').post(auth.isAuthenticated, (req, res, next) => {
             let mailOptions = {
                 from: FROM_EMAIL,
                 to: email,
-                subject: 'Temporary Password - Surge Global Assignment',
+                subject: 'Temporary Password - MERN Framework 2022',
                 html:
-                    '<h3>Your temporary password for surge global assignment project is: </h3>' +
+                    '<h3>Your temporary password for MERN Framework 2022 project is: </h3>' +
                     '<h2>' + tempPassword + '</h2>' +
                     '<p>Please login to reset your password </p>'
             };

@@ -28,13 +28,13 @@ export default function Navbar() {
                 {user.role ?
                     user.role === 'user' ?
                     <a href={"/notes/1"} className="navbar-brand">
-                        Surge Assignment
+                        MERN Framework 2022
                     </a> :
                     <a href={"/users"} className="navbar-brand">
-                        Surge Assignment
+                        MERN Framework 2022
                     </a> :
                     <a href={"/"} className="navbar-brand">
-                        Surge Assignment
+                        MERN Framework 2022
                     </a>
                 }
 
